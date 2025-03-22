@@ -53,14 +53,15 @@
                 </div>
                 <div class="w-60 contact-box-right">
                     <div class="box-shadow contact-form">
-                        <h3>Leave us a Message</h3>
+                        <h3>Leave us a Message</h3> 
+                        <div class="validation-errors"></div>
                         <form action="" class="main-contact-from">
-                            <input type="text" placeholder="First Name" class="input">
-                            <input type="text" placeholder="Last Name" class="input">
-                            <input type="email" placeholder="Email" class="input">
-                            <input type="text" placeholder="Phone" class="input">
-                            <textarea cols="50" rows="4" class="input" placeholder="Message"></textarea>
-                            <button type="submit" class="button button-a">Send Message</button>
+                            <input type="text" data-name="First Name" placeholder="First Name" class="input" required>
+                            <input type="text" data-name="Last Name" placeholder="Last Name" class="input" required>
+                            <input type="email" data-name="Email" placeholder="Email" class="input" required>
+                            <input type="text" data-name="Phone" placeholder="Phone" class="input" required>
+                            <textarea cols="50" data-name="Message" rows="4" class="input" placeholder="Message"></textarea>
+                            <button type="button" id="submit-form"class="button button-a">Send Message</button>
                         </form>
                     </div>
                 </div>
@@ -93,6 +94,8 @@
     <footer class="footer">
         <center><span class="color-black">&copy; 2025 Local Jobs Portal</span></center>
     </footer>
+
+    <script src="./assets/js/script.js"></script>
     
 </body>
 </html>

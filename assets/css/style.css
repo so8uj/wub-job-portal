@@ -226,8 +226,8 @@ body{
     row-gap: 24px;
     margin-bottom: 20px;
 }
-.job-box {
-    width: 29%;
+.job-box ,.single-job-box{
+    
     box-shadow: 0px -1px 8px -6px #000000b8;
     border-radius: 8px;
     background: #fff;
@@ -237,21 +237,29 @@ body{
     border-color: transparent;
     transition: .3s ease-in-out;
     cursor: pointer;
+    
+}
+.job-box {
+    width: 29%;
     height: 182px;
 }
-
-.job-box ul{
+.job-box ul , .single-job-box ul{
     margin-top: 10px;
     flex-direction: column;
     row-gap: 7px;
 }
-.job-box ul li span{
+.job-box ul li span , .single-job-box ul li span{
     font-weight: 600;
 }
 .job-box:hover{
     border-color: var(--color-a);
     transform: translateY(-5px);
 } 
+.single-job-box{
+    width: 100%;
+}
+
+
 
 /* Job Listing Authentication Section */
 .post-listing-login{
@@ -320,6 +328,20 @@ body{
     display: block;
     margin-bottom: 8px;
 }
+.validation-errors.invalid{
+    padding: 20px;
+    background: #ffafaf;
+    border-radius: 8px;
+}
+.validation-errors p{
+    font-weight: bold;
+    color: #ff0000;
+}
+.validation-errors p:not(:last-child){
+    margin-bottom: 5px;
+}
+
+
 /* Single JOb isting */
 .single-banner-area{
     padding-bottom: 140px;

@@ -41,12 +41,13 @@
             <div class="w-40 mx-auto">
                 <div class="box-shadow contact-form">
                         <h2 class="color-a title">Sign Up</h2><br>
+                        <div class="validation-errors"></div>
                         <form action="" class="main-contact-from">
-                            <input type="text" placeholder="Company Name" class="input">
-                            <input type="text" placeholder="Company Email" class="input">
-                            <input type="password" placeholder="Password" class="input">
-                            <input type="password" placeholder="Confirm Password" class="input">
-                            <button type="submit" class="button button-a">Sign Up</button>
+                            <input type="text" data-name="Company Name" placeholder="Company Name" class="input" required>
+                            <input type="text" data-name="Company Email" placeholder="Company Email" class="input" required>
+                            <input type="password" data-name="Password" placeholder="Password" class="input" required>
+                            <input type="password" data-name="Confirm Password" placeholder="Confirm Password" class="input" required>
+                            <button type="button" id="submit-form"  class="button button-a">Sign Up</button>
                         </form>
                     </div>
                     <div class="signin-footer">
@@ -67,5 +68,7 @@
         <center><span class="color-black">&copy; 2025 Local Jobs Portal</span></center>
     </footer>
     
+    <script src="./assets/js/script.js"></script>
+
 </body>
 </html>
