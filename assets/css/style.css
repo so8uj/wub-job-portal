@@ -1,0 +1,358 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* Variables */
+
+:root{
+    --color-a: #0061c2;
+    --color-white: #fff;
+    --color-white-2: #ddd;
+    --color-black: #111;
+}
+
+
+/* Default CSS */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul,ol{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: var(--color-a);
+}
+
+body{
+    font-family: "Inter", sans-serif;
+    background:var(--color-white-2);
+    color: var(--color-black);
+    
+}
+
+/* Utility CSS */
+.color-a,.hover-color-a:hover{
+    color: var(--color-a);
+}
+.color-white,.hover-color-white:hover{
+    color: var(--color-white);
+}
+.color-white-2,.hover-color-white-2:hover{
+    color: var(--color-white-2);
+}
+.color-black,.hover-color-black:hover{
+    color: var(--color-black);
+}
+.bg-a{
+    background: var(--color-a);
+}
+.bg-white{
+    background: var(--color-white);
+}
+.bg-white-2{
+    background: var(--color-white-2);
+}
+.container{
+    width: 1280px;
+    margin: auto;
+}
+.container-sm{
+    width: 900px;
+    margin: auto;
+}
+.flex{
+    display: flex;
+}
+.align-center{
+    align-items: center;
+}
+.justify-center{
+    justify-content: center;
+}
+.justify-between{
+    justify-content: space-between;
+}
+.content-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button{
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+}
+.button-white{
+    background: var(--color-white);
+    color: var(--color-black);
+}
+.button-white:hover{
+    background: var(--color-white-2);
+
+}
+.button-white-outline{
+    color: var(--color-white);
+    border: 1px solid var(--color-white);
+}
+.button-white:hover{
+    background: var(--color-a);
+    color: var(--color-white);
+}
+.button-white-outline:hover{
+    color: var(--color-black);
+    background: var(--color-white);
+}
+.button-a{
+    background: var(--color-a);
+    color: var(--color-white);
+}
+.button-a:hover{
+    background: var(--color-white-2);
+    color: var(--color-a);
+}
+.input{
+    background: transparent;
+    border: 1px solid var(--color-black);
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+.title{
+    font-size: 40px;
+}
+.mt-0{
+    margin-top: 0px !important;
+}
+.mx-auto{
+    margin: auto;
+}
+.box-shadow{
+    box-shadow: 0px -1px 8px -6px #000000b8;
+}
+.signin-footer{
+    margin-top: 30px;
+    text-align: center;
+}
+
+
+/* Widths */
+.w-30{
+    width: 30%;
+}
+.w-40{
+    width: 40%;
+}
+.w-50{
+    width: 50%;
+}
+.w-60{
+    width: 60%;
+}
+.w-70{
+    width: 70%;
+}
+.w-100{
+    width: 100%;
+}
+/* Header CSS */
+.header{
+    background: var(--color-a);
+    padding: 20px 0px;
+}
+.logo,
+.menu-butotns {
+    width: 25%;
+}
+.logo img{
+    width: 200px;
+}
+.menus{
+    width: 50%;
+    column-gap: 5px;
+}
+.menus li a{
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: .3s ease;
+}
+.menu-butotns{
+    text-align: right;
+}
+
+.menus li a:hover{
+    background: var(--color-white-2);
+    color: var(--color-a);
+}
+.manu-active{
+    background: var(--color-white);
+    color: var(--color-black);
+}
+
+/* Banner CSS */
+.banner-area{
+    background: var(--color-white);
+    padding-bottom: 70px;
+}
+.banner-content{
+    height: 350px;
+    flex-direction: column;
+}
+.banner-content h1{
+    font-size: 48px;
+    margin-bottom: 30px;
+}
+.job-serach-form{
+    column-gap: 10px;
+}
+.banner-content input{
+    width: 250px;
+    border-color: var(--color-a);
+}
+.banner-content button{
+    padding: 10px 25px;
+}
+
+/* Job Listing Section CSS */
+.job-listing-section{
+    margin-top: -100px;
+}
+
+.jobs-container{
+    flex-wrap: wrap;
+    row-gap: 24px;
+    margin-bottom: 20px;
+}
+.job-box {
+    width: 29%;
+    box-shadow: 0px -1px 8px -6px #000000b8;
+    border-radius: 8px;
+    background: #fff;
+    padding: 20px;
+    color: var(--color-black);
+    border: 1px solid;
+    border-color: transparent;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+    height: 182px;
+}
+
+.job-box ul{
+    margin-top: 10px;
+    flex-direction: column;
+    row-gap: 7px;
+}
+.job-box ul li span{
+    font-weight: 600;
+}
+.job-box:hover{
+    border-color: var(--color-a);
+    transform: translateY(-5px);
+} 
+
+/* Job Listing Authentication Section */
+.post-listing-login{
+    margin-top: 100px;
+    padding: 100px 0px;
+}
+.post-listing-login h2{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.auth-buttons a:not(:last-child){
+    margin-right: 10px;
+}
+.listing-left-area,
+.listing-right-area{
+    text-align: center;
+    width: 50%;
+}
+.listing-left-area h2{
+    color: var(--color-white);
+}
+.listing-right-area img{
+    width: 350px;
+}
+
+/* Single Page */
+.single-page{
+    padding: 60px 0px;
+}
+.para-section:not(:last-child){
+    margin-bottom: 50px;
+}
+.para-section p{
+    color: var(--color-black);
+    margin-top: 30px;
+    line-height: 1.4;
+}
+
+/* Contact Page  */
+.contact-box-container{
+    margin-top: 20px;
+}
+.contact-form h3{
+    margin-bottom: 10px;
+}
+.contact-box p{
+    line-height: 1.4;
+}
+.contact-box-right {
+    padding-left: 40px;
+}
+.contact-form{
+    padding: 30px;
+}
+.contact-form form{
+    padding-top: 15px;
+}
+.contact-form .input{
+    width: -webkit-fill-available;
+}
+.contact-form .input:not(:last-child) , .form-group:not(:last-child){
+    margin-bottom: 10px;
+}
+.form-group label{
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+/* Single JOb isting */
+.single-banner-area{
+    padding-bottom: 140px;
+}
+.single-page-banner{
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+.jobs-filters{
+    column-gap: 10px;
+    margin-bottom: 30px;
+}
+
+.job-listing-section.single-job-page{
+    margin-top: -150px;
+}
+
+.table table{
+    width: 100%;
+}
+.table{
+    padding-top: 15px;
+}
+.table table, .table table tr th , .table table tr td{
+    border: 1px solid var(--color-a);
+    border-collapse: collapse;
+}
+.table table tr th , .table table tr td{
+    padding: 8px 10px;
+}
+
+/* Footer CSS */
+.footer{
+    padding: 15px 0px;
+    background: var(--color-white);
+}

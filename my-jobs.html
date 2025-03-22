@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='shortcut icon' type='image/x-icon' href='./assets/img/favicon.ico' />
+    <title>My Job Portal | Local Job Portal</title>
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+</head>
+<body>
+   
+    <!-- Header Sectioon -->
+    <header class="header">
+        <div class="container">
+            <nav class="navber flex align-center">
+                <a class="logo" href="index.html">
+                    <img src="./assets/img/wub-logo-new.png" alt="World University of Bangladesh">
+                </a>
+                <ul class="menus flex justify-center">
+                    <li><a href="index.html" class="color-white">Home</a></li>
+                    <li><a href="about.html" class="color-white">About Us</a></li>
+                    <li><a href="jobs.html" class="color-white">Job Listings</a></li>
+                    <li><a href="my-jobs.html" class="color-white manu-active">My Jobs</a></li>
+                    <li><a href="contact.html" class="color-white">Contact</a></li>
+                </ul>
+
+                <div class="menu-butotns">
+                    <a href="sign-in.html" class="button button-white-outline">Sign In</a>
+                    <a href="sign-up.html" class="button button-white-outline">Sign Up</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="single-page bg-white">
+
+        <div class="container">
+
+            <h2 class="color-a title">My Jobs</h2>
+
+            <div class="flex contact-box-container">
+                <div class="w-60 contact-box ">
+                    <div class="box-shadow contact-form">
+                        <h3>Manage Jobs</h3>
+                        <div class="table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>SL</th>
+                                        <th>Job Title</th>
+                                        <th>Job Deadline</th>
+                                        <th>Job Salary</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Laravel Develoepr</td>
+                                        <td>28 February, 2025</td>
+                                        <td>40,000</td>
+                                        <td>
+                                            <button type="button" class="button button-a">View</button>
+                                            <button type="button" class="button button-a">Edit</button>
+                                            <button type="button" class="button button-a">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>UI/UX Designer</td>
+                                        <td>20 January, 2025</td>
+                                        <td>20,000</td>
+                                        <td>
+                                            <button type="button" class="button button-a">View</button>
+                                            <button type="button" class="button button-a">Edit</button>
+                                            <button type="button" class="button button-a">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                   
+                </div>
+                <div class="w-40 contact-box-right">
+                    <div class="box-shadow contact-form">
+                        <h3>List a New Job</h3>
+                        <form action="" class="main-contact-from">
+                            <div class="form-group">
+                                <label for="title">Job Title</label>
+                                <input type="text" placeholder="ex: Laravel Developer" class="input">
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Job Deadline</label>
+                                <input type="date" class="input">
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Job Area</label>
+                                <textarea cols="50" rows="3" class="input" placeholder="ex: Belly Tower, 5th Floor Chasara, Narayanganj, 1410"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Job Salary</label>
+                                <input type="text" placeholder="ex: Negotiable/30,000 BDT" class="input">
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Office Time</label>
+                                <input type="text" placeholder="ex: 10:00 AM - 06:00 PM" class="input">
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Weekends</label>
+                                <input type="text" placeholder="ex: 2/3/4" class="input">
+                            </div>
+                            <button type="submit" class="button button-a">Post Job</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+
+
+    <!-- Footer  -->
+    <footer class="footer">
+        <center><span class="color-black">&copy; 2025 Local Jobs Portal</span></center>
+    </footer>
+    
+</body>
+</html>
