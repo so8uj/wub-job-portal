@@ -25,3 +25,9 @@ if(submit_form){
     
     });
 }
+
+var menu_button = document.querySelector("#menu_button");
+menu_button.addEventListener("click",function(){
+    let navber = document.querySelector(".navber");
+    navber.classList.toggle("open");
+});
