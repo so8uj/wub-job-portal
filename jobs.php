@@ -1,43 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='shortcut icon' type='image/x-icon' href='./assets/img/favicon.ico' />
-    <title>Jobs | Local Job Portal</title>
-
-    <link rel="stylesheet" href="./assets/css/style.css">
-
-</head>
-<body>
-   
-    <!-- Header Sectioon -->
-    <header class="header">
-        <div class="container">
-            <nav class="navber flex align-center">
-                <a class="logo" href="index.html">
-                    <img src="./assets/img/wub-logo-new.png" alt="World University of Bangladesh">
-                </a>
-                <ul class="menus flex justify-center">
-                    <li><a href="index.html" class="color-white">Home</a></li>
-                    <li><a href="about.html" class="color-white">About Us</a></li>
-                    <li><a href="jobs.html" class="color-white manu-active">Job Listings</a></li>
-                    <li><a href="my-jobs.html" class="color-white">My Jobs</a></li>
-                    <li><a href="contact.html" class="color-white">Contact</a></li>
-                    <li class="d-m-show">
-                        <a href="sign-in.html" class="button button-white-outline">Sign In</a>
-                        <a href="sign-up.html" class="button button-white-outline">Sign Up</a>
-                    </li>
-                </ul>
-
-                <div class="menu-butotns">
-                    <a href="sign-in.html" class="button d-m-hide button-white-outline">Sign In</a>
-                    <a href="sign-up.html" class="button d-m-hide button-white-outline">Sign Up</a>
-                    <a href="javascript:void(0)" class="button d-m-show button-white-outline" id="menu_button">- Menu</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+<?php require_once("includes/header.php"); ?>
 
     <!-- Banner Section -->
     <section class="single-banner-area bg-white">
@@ -217,31 +178,8 @@
     </section>
 
 
-    <!-- Job Listing Authentication -->
-    <section class="post-listing-login bg-a">
-        <div class="container">
-            <div class="flex align-center">
-                <div class="listing-left-area">
-                    <h2>List Your Jobs Now</h2>
-                    <div class="auth-buttons">
-                        <a href="sign-in.html" class="button button-white-outline">Sign In</a>
-                        <a href="sign-up.html" class="button button-white-outline">Sign Up</a>
-                    </div>
-                </div>
-                <div class="listing-right-area">
-                    <img src="./assets/img/job-listing-right-image.webp" alt="Listing Right Image">
-                </div>
-            </div>
+<?php 
+    require_once("includes/job_listing_detail.php"); 
+    require_once("includes/footer.php");
 
-        </div>
-    </section>
-    
-    <!-- Footer  -->
-    <footer class="footer">
-        <center><span class="color-black">&copy; 2025 Local Jobs Portal</span></center>
-    </footer>
-    
-    <script src="./assets/js/script.js"></script>
-
-</body>
-</html>
+?>
