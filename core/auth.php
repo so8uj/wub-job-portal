@@ -13,8 +13,6 @@ include("./database.php");
 
 $email = $_POST['email'];
 
-print_r($_POST);
-
 if($_POST['auth_for'] === 'Signup'){
 
     $name = $_POST['name'];
@@ -26,7 +24,6 @@ if($_POST['auth_for'] === 'Signup'){
     $_SESSION['auth_id'] = $inserted_id;
 
     header("Location: ../my-jobs.php?id_opned=true");
-    exit();
 }else{
 
     $check_email = mysqli_query($conection,"SELECT * FROM `users` WHERE `email` = '$email'");
@@ -43,8 +40,9 @@ if($_POST['auth_for'] === 'Signup'){
     }else{
         header("Location: ../sign-in.php?error=Invalid Email!");
     }
-
 }
+mysqli_close($conection);
+exit();
 
 
 ?>
