@@ -343,7 +343,14 @@ body{
 .validation-errors p:not(:last-child){
     margin-bottom: 5px;
 }
-
+.validation-errors.success{
+    color: #27a827;
+    font-weight: bold;
+    background: #044404;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
 
 /* Single JOb isting */
 .single-banner-area{

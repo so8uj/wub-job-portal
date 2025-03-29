@@ -1,14 +1,24 @@
-<?php require_once("includes/header.php"); ?>
+<?php 
+    require_once("includes/header.php"); 
+    if(!isset($_SESSION['auth_id'])) { 
+        header("Location: sign-in.php");
+    }    
+?>
 
     <section class="single-page bg-white">
 
         <div class="container">
-
+            
+            <?php if(isset($_GET['id_opned']) && $_GET['id_opned'] === 'true'){ ?> 
+            <div class="validation-errors success">Welcome to WUB Local Job Portal</div>
+            <?php } ?>
             <div class="">
-                <a href="sign-in.html" class="button button-a">My Jobs</a>
+                <a href="my-jobs.php" class="button button-a">My Jobs</a>
                 <a href="sign-up.html" class="button button-a">Applicants</a>
-                <a href="sign-up.html" class="button button-a">Logout</a>
+                <a href="logout.php" class="button button-a">Logout</a>
             </div>
+
+          
 
             <div class="flex contact-box-container">
                 <div class="w-60 contact-box ">
