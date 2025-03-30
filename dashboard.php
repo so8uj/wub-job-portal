@@ -20,8 +20,10 @@
             <br>
             <div class="flex dashboard-cards">
                 <div class="card box-shadow">
-                    <h3>Total Jobs</h3>
-                    <h3>5</h3>
+                    <a href="all-jobs.php">
+                        <h3>Total Jobs</h3>
+                        <h3>5</h3>
+                    </a>
                 </div>
                 <div class="card box-shadow">
                     <h3>Total Applicants</h3>
@@ -32,16 +34,22 @@
                     <h3>5</h3>
                 </div>
                 <div class="card box-shadow">
-                    <h3>Approved Jobs</h3>
-                    <h3>5</h3>
+                    <a href="all-jobs.php?status=Approved">
+                        <h3>Approved Jobs</h3>
+                        <h3>5</h3>
+                    </a>
                 </div>
                 <div class="card box-shadow">
-                    <h3>Pendings Jobs</h3>
-                    <h3>5</h3>
+                    <a href="all-jobs.php?status=Pending">
+                        <h3>Pendings Jobs</h3>
+                        <h3>5</h3>
+                    </a>
                 </div>
                 <div class="card box-shadow">
-                    <h3>Rejected Jobs</h3>
-                    <h3>5</h3>
+                    <a href="all-jobs.php?status=Rejected">
+                        <h3>Rejected Jobs</h3>
+                        <h3>5</h3>
+                    </a>
                 </div>
             </div>
         </div>

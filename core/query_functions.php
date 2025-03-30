@@ -15,8 +15,30 @@ function get_all_data($table_name){
     exit;
 }
 
-function all_jobs_with_filters($filters){
-    print_r($filters);
+function all_jobs_with_filters($filters,$relation=0){
+
+    $status_filter = "";
+    $query_building = "SELECT jobs.*";
+
+    if($relation == 1){
+        $retaion_add = ",users.name FROM jobs INNER JOIN users ON jobs.user_id = users.id";
+        $query_building = $query_building
+        .$retaion_add;
+    }else{
+        $query_building = $query_building." FROM jobs";
+    }  
+
+    if(isset($filters['status'])){
+        $status = $filters['status'];
+        $status_filter = " WHERE `status` = '$status'";
+        $query_building = $query_building
+                          .$status_filter;
+    }  
+
+
+    $query_building = $query_building. " ORDER BY `id` desc";  
+              
+    return mysqli_query(con_global(),$query_building);
 }
 
 // Fetch Data by a specific filed
