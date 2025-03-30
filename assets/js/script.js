@@ -15,16 +15,16 @@ if(submit_form){
         // Email Pattern Match
         let email = document.querySelector("input[name='email']");
         if (email) {
-            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
-            if (!emailPattern.test(email.value)) {
+            let email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+            if (!email_pattern.test(email.value)) {
                 validation.push("Invalid Email Format!");
             }
         }
         // Match Password
         let password = document.querySelector("input[name='password']");
-        let confirmPassword = document.querySelector("input[name='confirm_password']");
-        if (password && confirmPassword) {
-            if (password.value !== confirmPassword.value) {
+        let confirm_password = document.querySelector("input[name='confirm_password']");
+        if (password && confirm_password) {
+            if (password.value !== confirm_password.value) {
                 validation.push("Password and Confirm Password must match!");
             }
         }

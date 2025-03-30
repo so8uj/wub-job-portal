@@ -88,6 +88,10 @@ body{
     transition: .3s ease-in-out;
     cursor: pointer;
 }
+.button-sm{
+    padding: 4px 10px;
+    font-size: 12px;
+}
 .button-white{
     background: var(--color-white);
     color: var(--color-black);
@@ -331,7 +335,7 @@ body{
     display: block;
     margin-bottom: 8px;
 }
-.validation-errors.invalid{
+.invalid{
     padding: 20px;
     background: #ffafaf;
     border-radius: 8px;
@@ -343,13 +347,19 @@ body{
 .validation-errors p:not(:last-child){
     margin-bottom: 5px;
 }
-.validation-errors.success{
+.success{
     color: #27a827;
     font-weight: bold;
     background: #044404;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 10px;
+}
+.pending{
+    background: #fffd94;
+}
+.rejected{
+    background: #ff9b94;
 }
 
 /* Single JOb isting */
