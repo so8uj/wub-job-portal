@@ -39,7 +39,7 @@
 
                 <div class="menu-butotns">
                     <?php if(isset($_SESSION['auth_id'])) { ?> 
-                        <a href="my-jobs.php" class="button d-m-hide button-white-outline">Dashboard</a>
+                        <a href="dashboard.php" class="button d-m-hide button-white-outline">Dashboard</a>
                     <?php }else{ ?>
                         <a href="sign-in.php" class="button d-m-hide button-white-outline">Sign In</a>
                         <a href="sign-up.php" class="button d-m-hide button-white-outline">Sign Up</a>

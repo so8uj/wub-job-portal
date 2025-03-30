@@ -23,7 +23,7 @@ if($_POST['auth_for'] === 'Signup'){
 
     $_SESSION['auth_id'] = $inserted_id;
 
-    header("Location: ../my-jobs.php?id_opned=true");
+    header("Location: ../dashboard.php?id_opned=true");
 }else{
 
     $check_email = mysqli_query($conection,"SELECT * FROM `users` WHERE `email` = '$email'");
@@ -32,7 +32,7 @@ if($_POST['auth_for'] === 'Signup'){
         if(password_verify($_POST['password'],$user_data['password'])){
             
             $_SESSION['auth_id'] = $user_data['id'];
-            header("Location: ../my-jobs.php");
+            header("Location: ../dashboard.php");
             
         }else{
             header("Location: ../sign-in.php?error=Invalid Password!");

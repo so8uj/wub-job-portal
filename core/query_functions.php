@@ -15,6 +15,10 @@ function get_all_data($table_name){
     exit;
 }
 
+function all_jobs_with_filters($filters){
+    print_r($filters);
+}
+
 // Fetch Data by a specific filed
 function get_single_data($table_name,$table_field,$table_value){
     return mysqli_query(con_global(),"SELECT * FROM `$table_name` WHERE `$table_field` = '$table_value' ORDER BY `id` desc");

@@ -36,20 +36,15 @@
                 <div class=" success"><?= isset($_GET['msg']) ? $_GET['msg'] : '' ?></div>
             <?php }elseif(isset($_GET['action']) && $_GET['action'] === 'invalid'){ ?>
                 <div class="invalid"><?= isset($_GET['msg']) ? $_GET['msg'] : '' ?></div>
-            <?php } ?>
+            <?php } 
+            include("./includes/dashboard_menu.php");
+            ?>
 
-
-
-            <div class="">
-                <a href="my-jobs.php" class="button button-a">My Jobs</a>
-                <a href="sign-up.html" class="button button-a">Applicants</a>
-                <a href="logout.php" class="button button-a">Logout</a>
-            </div>
 
             <div class="flex contact-box-container">
                 <div class="w-60 contact-box ">
                     <div class="box-shadow contact-form">
-                        <h3>Manage Jobs</h3>
+                        <h3>Manage My Jobs</h3>
                         <div class="table responsive-table">
                             <table>
                                 <thead>
