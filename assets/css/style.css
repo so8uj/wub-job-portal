@@ -266,6 +266,9 @@ body{
     row-gap: 24px;
     margin-bottom: 20px;
 }
+.gap-x-3{
+    column-gap: 19px;
+}
 .job-box ,.single-job-box{
     
     box-shadow: 0px -1px 8px -6px #000000b8;

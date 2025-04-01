@@ -1,12 +1,16 @@
-<?php require_once("includes/header.php"); ?>
+<?php require_once("includes/header.php"); 
+    include("./core/query_functions.php");
+    $all_jobs = get_jobs([],6,'desc');
+?>
 
     <!-- Banner Section -->
     <section class="banner-area ">
         <div class="container">
             <div class="banner-content content-center">
                 <h1 class="color-a">Find your Dream Job</h1>
-                <form action="" class="job-serach-form flex align-center">
-                    <input type="text" class="input" placeholder="Search jobs..">
+                <form action="jobs.php" method="get" class="job-serach-form flex align-center">
+                    <input type="hidden" name="search" value="true">
+                    <input type="text" name="title" class="input" placeholder="Search jobs..">
                     <button class="button button-a">Search</button>
                 </form>
                 
@@ -18,83 +22,26 @@
     <section class="job-listing-section">
         <div class="container">
 
-            <div class="flex jobs-container justify-between">
-
-                <div class="job-box">
-                    <h2 class="color-a">Full Stack Developer</h2>
-                    <small><i>by Company X</i></small>
-                    <ul class="flex">
-                        <li><span>Deadline:</span> 23 April, 2025</li>
-                        <li><span>Area:</span> Narayanganj, Dhaka</li>
-                        <li><span>Salary:</span> Negotiable</li>
-                        <li><span>Office Time:</span> 10:00 AM - 06:00 PM</li>
-                        <li><span>Weekends:</span> 2 Days</li>
-                    </ul>
-                </div>
-
-                <div class="job-box">
-                    <h2 class="color-a">Full Stack Developer</h2>
-                    <small><i>by Company X</i></small>
-                    <ul class="flex">
-                        <li><span>Deadline:</span> 23 April, 2025</li>
-                        <li><span>Area:</span> Narayanganj, Dhaka</li>
-                        <li><span>Salary:</span> Negotiable</li>
-                        <li><span>Office Time:</span> 10:00 AM - 06:00 PM</li>
-                        <li><span>Weekends:</span> 2 Days</li>
-                    </ul>
-                </div>
-
-                <div class="job-box">
-                    <h2 class="color-a">Full Stack Developer</h2>
-                    <small><i>by Company X</i></small>
-                    <ul class="flex">
-                        <li><span>Deadline:</span> 23 April, 2025</li>
-                        <li><span>Area:</span> Narayanganj, Dhaka</li>
-                        <li><span>Salary:</span> Negotiable</li>
-                        <li><span>Office Time:</span> 10:00 AM - 06:00 PM</li>
-                        <li><span>Weekends:</span> 2 Days</li>
-                    </ul>
-                </div>
-
-                <div class="job-box">
-                    <h2 class="color-a">Full Stack Developer</h2>
-                    <small><i>by Company X</i></small>
-                    <ul class="flex">
-                        <li><span>Deadline:</span> 23 April, 2025</li>
-                        <li><span>Area:</span> Narayanganj, Dhaka</li>
-                        <li><span>Salary:</span> Negotiable</li>
-                        <li><span>Office Time:</span> 10:00 AM - 06:00 PM</li>
-                        <li><span>Weekends:</span> 2 Days</li>
-                    </ul>
-                </div>
-
-                <div class="job-box">
-                    <h2 class="color-a">Full Stack Developer</h2>
-                    <small><i>by Company X</i></small>
-                    <ul class="flex">
-                        <li><span>Deadline:</span> 23 April, 2025</li>
-                        <li><span>Area:</span> Narayanganj, Dhaka</li>
-                        <li><span>Salary:</span> Negotiable</li>
-                        <li><span>Office Time:</span> 10:00 AM - 06:00 PM</li>
-                        <li><span>Weekends:</span> 2 Days</li>
-                    </ul>
-                </div>
-
-                <div class="job-box">
-                    <h2 class="color-a">Full Stack Developer</h2>
-                    <small><i>by Company X</i></small>
-                    <ul class="flex">
-                        <li><span>Deadline:</span> 23 April, 2025</li>
-                        <li><span>Area:</span> Narayanganj, Dhaka</li>
-                        <li><span>Salary:</span> Negotiable</li>
-                        <li><span>Office Time:</span> 10:00 AM - 06:00 PM</li>
-                        <li><span>Weekends:</span> 2 Days</li>
-                    </ul>
-                </div>
+            <div class="flex jobs-container <?= mysqli_num_rows($all_jobs) > 3 ? 'justify-between' : 'gap-x-3'  ?>">
+                
+                <?php while($all_job = mysqli_fetch_assoc($all_jobs)) { ?> 
+                    <div class="job-box">
+                        <h2 class="color-a"><?= $all_job['title'] ?></h2>
+                        <small><i>by <?= $all_job['name'] ?></i></small>
+                        <ul class="flex">
+                            <li><span>Deadline:</span> <?= date('d M, Y',strtotime($all_job['deadline'])) ?></li>
+                            <li><span>Area:</span> <?= $all_job['area'] ?></li>
+                            <li><span>Salary:</span> <?= $all_job['salary'] ?></li>
+                            <li><span>Office Time:</span> <?= $all_job['office_time'] ?></li>
+                            <li><span>Weekends:</span> <?= $all_job['weekends'] ?> Day<?= $all_job['weekends'] > 1 ? 's' : '' ?></li>
+                        </ul>
+                    </div>
+                <?php } ?>
 
             </div>
-
-            <center><a href="jobs.html" class="button button-white"> View Full Listing</a></center>
+            <?php if(mysqli_num_rows($all_jobs) > 6){ ?> 
+                <center><a href="jobs.php" class="button button-white"> View Full Listing</a></center>
+            <?php } ?>
 
         </div>
     </section>

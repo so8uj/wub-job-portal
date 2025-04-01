@@ -15,7 +15,8 @@ function get_all_data($table_name){
     exit;
 }
 
-function all_jobs_with_filters($filters,$relation=0,$my_jobs=0){
+// Jobs for Backend
+function all_jobs_with_filters($filters=[],$relation=0,$my_jobs=0){
 
     $status_filter = "";
     $query_building = "SELECT jobs.*";
@@ -44,6 +45,34 @@ function all_jobs_with_filters($filters,$relation=0,$my_jobs=0){
 
     $query_building = $query_building. " ORDER BY `id` desc";       
     return mysqli_query(con_global(),$query_building);
+}
+
+// Jobs For Frontend
+function get_jobs($filters=[],$limit=0,$order_by='oldest'){
+
+    $job_query = "SELECT jobs.*, users.name FROM jobs INNER JOIN users ON jobs.user_id = users.id";
+
+    if(isset($filters['title']) && !empty($filters['title'])){
+        $title = $filters['title'];
+        $add_search_filter = " WHERE `title` LIKE '%$title%'";
+        $job_query = $job_query.$add_search_filter;
+    }
+
+    if(isset($filters['location']) && !empty($filters['location'])){
+        $location = $filters['location'];
+        $operator = isset($filters['title']) ? " AND" : " WHERE";
+        $add_location_filter = $operator." `area` LIKE '%$location%'";
+        $job_query = $job_query.$add_location_filter;
+    }
+
+    if($order_by != 'oldest'){
+        $job_query = $job_query." ORDER BY `id` desc";
+    }
+    if($limit != 0){
+        $job_query = $job_query." LIMIT $limit";
+    }
+    
+    return mysqli_query(con_global(),$job_query);
 }
 
 // Fetch Data by a specific filed
