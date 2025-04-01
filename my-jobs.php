@@ -3,7 +3,15 @@
     include('core/frontend_functions.php');
     if(!isset($_SESSION['auth_id'])) { 
         header("Location: sign-in.php");
-    }   
+    }
+    
+    $filters = [];
+    if(isset($_GET['status'])){
+        $filters['status'] = $_GET['status'];
+    }
+    $my_jobs = all_jobs_with_filters($filters,0,1);
+
+    
     $action_type = 'Add';
 
     if(isset($_GET['action']) && $_GET['action'] === 'update' && isset($_GET['id'])){
@@ -44,7 +52,15 @@
             <div class="flex contact-box-container">
                 <div class="w-60 contact-box ">
                     <div class="box-shadow contact-form">
-                        <h3>Manage My Jobs</h3>
+                        <div class="flex justify-between">
+                            <h3>Manage My <?= isset($_GET['status']) ? $_GET['status'] : '' ?> Jobs</h3>
+                            <div>
+                                <a href="my-jobs.php" class="button button-sm button-a">All</a>
+                                <a href="?status=Approved" class="button button-sm button-green">Approved</a>
+                                <a href="?status=Pending" class="button button-sm button-warning">Pending</a>
+                                <a href="?status=Rejected" class="button button-sm button-red">Rejected</a>
+                            </div>
+                        </div>
                         <div class="table responsive-table">
                             <table>
                                 <thead>
@@ -66,8 +82,8 @@
                                         <td><?= $my_job['salary'] ?></td>
                                         <td>
                                             <a href="#" class="button button-sm button-a">View</a>
-                                            <a href="?action=update&id=<?= $my_job['id'] ?>" class="button button-sm button-a">Edit</a>
-                                            <a href="?delete=true&id=<?= $my_job['id'] ?>" onclick="return confirm('Are you want to Delete!')" class="button button-sm button-a">Delete</a>
+                                            <a href="?action=update&id=<?= $my_job['id'] ?>" class="button button-sm button-warning">Edit</a>
+                                            <a href="?delete=true&id=<?= $my_job['id'] ?>" onclick="return confirm('Are you want to Delete!')" class="button button-sm button-red">Delete</a>
                                         </td>
                                     </tr>
 
@@ -118,7 +134,7 @@
                             <?php } ?>
                             <input type="hidden" name="action_type" value="<?= $action_type; ?>">
 
-                            <button type="button" id="submit-form" class="button button-a">Post Job</button>
+                            <button type="button" id="submit-form" class="button button-a"><?= $action_type == 'Add' ? 'Post' : 'Update' ?> Job</button>
                         </form>
                     </div>
                 </div>

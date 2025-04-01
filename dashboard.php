@@ -1,6 +1,9 @@
 <?php 
     require_once("includes/header.php"); 
     include('core/frontend_functions.php');
+    if(!isset($_SESSION['auth_id'])) { 
+        header("Location: sign-in.php");
+    }
 ?>
 
     <section class="single-page bg-white">
@@ -22,33 +25,35 @@
                 <div class="card box-shadow">
                     <a href="all-jobs.php">
                         <h3>Total Jobs</h3>
-                        <h3>5</h3>
+                        <h3><?= count_data('jobs') ?></h3>
                     </a>
                 </div>
                 <div class="card box-shadow">
                     <h3>Total Applicants</h3>
-                    <h3>5</h3>
+                    <h3>0</h3>
                 </div>
                 <div class="card box-shadow">
                     <h3>Total Users</h3>
-                    <h3>5</h3>
+                    <h3>0</h3>
                 </div>
                 <div class="card box-shadow">
-                    <a href="all-jobs.php?status=Approved">
-                        <h3>Approved Jobs</h3>
-                        <h3>5</h3>
+                    
+                <a href="all-jobs.php?status=Approved">
+                    <h3>Approved Jobs</h3>
+                    <h3><?= count_data('jobs','status','Approved') ?></h3>
+                </a>
                     </a>
                 </div>
                 <div class="card box-shadow">
                     <a href="all-jobs.php?status=Pending">
                         <h3>Pendings Jobs</h3>
-                        <h3>5</h3>
+                        <h3><?= count_data('jobs','status','Pending') ?></h3>
                     </a>
                 </div>
                 <div class="card box-shadow">
                     <a href="all-jobs.php?status=Rejected">
                         <h3>Rejected Jobs</h3>
-                        <h3>5</h3>
+                        <h3><?= count_data('jobs','status','Rejected') ?></h3>
                     </a>
                 </div>
             </div>
@@ -60,24 +65,34 @@
             <br>
             <div class="flex dashboard-cards">
                 <div class="card box-shadow">
-                    <h3>My Jobs</h3>
-                    <h3>5</h3>
+                    <a href="my-jobs.php">
+                        <h3>My Jobs</h3>
+                        <h3><?= count_data('jobs',0,0,$user_id) ?></h3>
+                    </a>
                 </div>
                 <div class="card box-shadow">
-                    <h3>My Applicants</h3>
-                    <h3>5</h3>
+                    <a href="">
+                        <h3>My Applicants</h3>
+                        <h3>5</h3>
+                    </a>
                 </div>
                 <div class="card box-shadow">
-                    <h3>Approved Jobs</h3>
-                    <h3>5</h3>
+                    <a href="my-jobs.php?status=Approved">
+                        <h3>Approved Jobs</h3>
+                        <h3><?= count_data('jobs','status','Approved',$user_id) ?></h3>
+                    </a>
                 </div>
                 <div class="card box-shadow">
-                    <h3>Pendings Jobs</h3>
-                    <h3>5</h3>
+                    <a href="my-jobs.php?status=Pending">
+                        <h3>Pendings Jobs</h3>
+                        <h3><?= count_data('jobs','status','Pending',$user_id) ?></h3>
+                    </a>
                 </div>
                 <div class="card box-shadow">
-                    <h3>Rejected Jobs</h3>
-                    <h3>5</h3>
+                    <a href="my-jobs.php?status=Rejected">
+                        <h3>Rejected Jobs</h3>
+                        <h3><?= count_data('jobs','status','Rejected',$user_id) ?></h3>
+                    </a>
                 </div>
             </div>
         </div>

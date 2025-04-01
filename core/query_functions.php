@@ -15,7 +15,7 @@ function get_all_data($table_name){
     exit;
 }
 
-function all_jobs_with_filters($filters,$relation=0){
+function all_jobs_with_filters($filters,$relation=0,$my_jobs=0){
 
     $status_filter = "";
     $query_building = "SELECT jobs.*";
@@ -34,10 +34,15 @@ function all_jobs_with_filters($filters,$relation=0){
         $query_building = $query_building
                           .$status_filter;
     }  
+    if($my_jobs == 1){
+        $user_id = isset($_SESSION['auth_id']) ? $_SESSION['auth_id'] : 1;
+        $operatior = isset($filters['status']) ? " AND" : " WHERE";
+        $my_jobs_query = $operatior." `user_id` = '$user_id'";
+        $query_building = $query_building
+                          .$my_jobs_query;
+    }
 
-
-    $query_building = $query_building. " ORDER BY `id` desc";  
-              
+    $query_building = $query_building. " ORDER BY `id` desc";       
     return mysqli_query(con_global(),$query_building);
 }
 
@@ -47,6 +52,10 @@ function get_single_data($table_name,$table_field,$table_value){
     exit;
 }
 
+function update_jobstatus($id,$status){
+    return mysqli_query(con_global(),"UPDATE `jobs` SET `status`='$id' WHERE `id` = '$status'");
+    exit;
+}
 
 // Delete All Data by a Specific Field
 function delete_data($table_name,$table_field,$table_value){
@@ -55,6 +64,26 @@ function delete_data($table_name,$table_field,$table_value){
     exit;
 }
 
+// Count Function
+function count_data($table_name,$filed_name=0,$filed_value=0,$by_user=0){
 
+    $buld_query = "SELECT COUNT(*) AS cnt FROM `$table_name`"; 
+    if($filed_name != 0 && $filed_value != 0){
+        $buld_query = $buld_query." WHERE `$filed_name` = '$filed_value'";
+    }
+    if($by_user != 0){
+        $operatior = ($filed_name != 0 && $filed_value != 0) ? " AND" : " WHERE";
+        $user_condition = $operatior." `user_id` = '$by_user'";
+        $buld_query = $buld_query.$user_condition;
+    }
+    $count_query = mysqli_query(con_global(),$buld_query);
+    $get_data = mysqli_fetch_assoc($count_query);
+    if($get_data['cnt'] > 0){
+        return $get_data['cnt']; 
+    }else{
+        return 0;
+    }
+    exit;
+}
 
 ?>
