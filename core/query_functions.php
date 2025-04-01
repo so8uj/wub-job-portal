@@ -74,7 +74,11 @@ function get_jobs($filters=[],$limit=0,$order_by='oldest'){
     
     return mysqli_query(con_global(),$job_query);
 }
-
+function get_single_job($id){
+    $query = "SELECT jobs.*, users.name FROM jobs INNER JOIN users ON jobs.user_id = users.id WHERE jobs.`id` = '$id'";
+    return mysqli_query(con_global(),$query);
+    exit;
+}
 // Fetch Data by a specific filed
 function get_single_data($table_name,$table_field,$table_value){
     return mysqli_query(con_global(),"SELECT * FROM `$table_name` WHERE `$table_field` = '$table_value' ORDER BY `id` desc");

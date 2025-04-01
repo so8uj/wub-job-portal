@@ -282,6 +282,9 @@ body{
     cursor: pointer;
     
 }
+.job-box a,.single-job-box a{
+    color: var(--color-black);
+}
 .job-box {
     width: 29%;
     height: 182px;

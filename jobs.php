@@ -51,15 +51,17 @@ include("./core/query_functions.php");
                 
                 <?php while($all_job = mysqli_fetch_assoc($all_jobs)) { ?> 
                     <div class="job-box">
-                        <h2 class="color-a"><?= $all_job['title'] ?></h2>
-                        <small><i>by <?= $all_job['name'] ?></i></small>
-                        <ul class="flex">
-                            <li><span>Deadline:</span> <?= date('d M, Y',strtotime($all_job['deadline'])) ?></li>
-                            <li><span>Area:</span> <?= $all_job['area'] ?></li>
-                            <li><span>Salary:</span> <?= $all_job['salary'] ?></li>
-                            <li><span>Office Time:</span> <?= $all_job['office_time'] ?></li>
-                            <li><span>Weekends:</span> <?= $all_job['weekends'] ?> Day<?= $all_job['weekends'] > 1 ? 's' : '' ?></li>
-                        </ul>
+                        <a href="single-job.php?title=<?= $all_job['title'] ?>&id=<?= base64_encode($all_job['id']) ?>">
+                            <h2 class="color-a"><?= $all_job['title'] ?></h2>
+                            <small><i>by <?= $all_job['name'] ?></i></small>
+                            <ul class="flex">
+                                <li><span>Deadline:</span> <?= date('d M, Y',strtotime($all_job['deadline'])) ?></li>
+                                <li><span>Area:</span> <?= $all_job['area'] ?></li>
+                                <li><span>Salary:</span> <?= $all_job['salary'] ?></li>
+                                <li><span>Office Time:</span> <?= $all_job['office_time'] ?></li>
+                                <li><span>Weekends:</span> <?= $all_job['weekends'] ?> Day<?= $all_job['weekends'] > 1 ? 's' : '' ?></li>
+                            </ul>
+                        </a>
                     </div>
                 <?php } ?>
 

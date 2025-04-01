@@ -14,7 +14,7 @@ if(submit_form){
         });
         // Email Pattern Match
         let email = document.querySelector("input[name='email']");
-        if (email) {
+        if (email.value != "") {
             let email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
             if (!email_pattern.test(email.value)) {
                 validation.push("Invalid Email Format!");
@@ -26,6 +26,16 @@ if(submit_form){
         if (password && confirm_password) {
             if (password.value !== confirm_password.value) {
                 validation.push("Password and Confirm Password must match!");
+            }
+        }
+
+        // Handle File Extension PDF
+        let cv = document.querySelector("input[name='cv']");
+        if (cv && cv.files.length > 0) {
+            let file = cv.files[0];
+            let file_extension = file.name.split('.').pop().toLowerCase();
+            if (file_extension !== 'pdf') {
+                validation.push("Only PDF files are allowed for CV upload!");
             }
         }
 
