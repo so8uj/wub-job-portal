@@ -5,7 +5,7 @@
     $get_single_job = get_single_job($id);
     $count_job = mysqli_num_rows($get_single_job);
     $single_job = $count_job > 0 ? mysqli_fetch_assoc($get_single_job) : [];
-    
+
 ?>
     <?php if($count_job > 0){ ?> 
 
@@ -58,7 +58,7 @@
                                         <input type="text" data-name="Phone" placeholder="Phone" class="input" name="phone" required>
                                         <textarea cols="50" data-name="Cover Latter" rows="4" class="input" placeholder="Cover Latter" name="cover_latter" required></textarea>
                                         <div>
-                                            <input type="file" data-name="Phone" class="input" name="cv" required>
+                                            <input type="file" data-name="Upload CV" class="input" name="cv" required>
                                             <small>Upload your CV (Accept only PDF)</small>
                                         </div>
                                         <br>

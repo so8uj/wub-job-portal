@@ -81,7 +81,8 @@
                                         <td><?= date('d M, Y',strtotime($my_job['deadline'])) ?></td>
                                         <td><?= $my_job['salary'] ?></td>
                                         <td>
-                                            <a href="#" class="button button-sm button-a">View</a>
+                                            <a href="single-job.php?title=<?= $my_job['title'] ?>&id=<?= base64_encode($my_job['id']) ?>" target="_blank" class="button button-sm button-a">View</a>
+                                            <a href="applicants.php?id=<?= $my_job['id'] ?>" class="button button-sm button-a">Applicants</a>
                                             <a href="?action=update&id=<?= $my_job['id'] ?>" class="button button-sm button-warning">Edit</a>
                                             <a href="?delete=true&id=<?= $my_job['id'] ?>" onclick="return confirm('Are you want to Delete!')" class="button button-sm button-red">Delete</a>
                                         </td>

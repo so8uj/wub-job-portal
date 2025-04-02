@@ -81,10 +81,10 @@
                                     <td><?= date('d M, Y', strtotime($all_jobs['deadline'])) ?></td>
                                     <td><?= $all_jobs['salary'] ?></td>
                                     <td>
-                                        <a href="#" class="button button-sm button-a">View</a>
                                         <a href="?status_chnage=Approved&id=<?= $all_jobs['id']; ?>" class="button button-sm button-green" onclick="return confirm('Are you want to Approve!')">Approve</a>
                                         <a href="?status_chnage=Rejected&id=<?= $all_jobs['id']; ?>" class="button button-sm button-red" onclick="return confirm('Are you want to Reject!')">Reject</a>
-                                        <a href="?action=update&id=<?= $all_jobs['id'] ?>" class="button button-sm button-warning">Edit</a>
+                                        <a href="single-job.php?title=<?= $all_jobs['title'] ?>&id=<?= base64_encode($all_jobs['id']) ?>" target="_blank" class="button button-sm button-a">View</a>
+                                        <a href="applicants.php?id=<?= $all_jobs['id'] ?>" class="button button-sm button-warning">Applicants</a>
                                         <a href="?delete=true&id=<?= $all_jobs['id'] ?>" onclick="return confirm('Are you want to Delete!')" class="button button-sm button-red">Delete</a>
                                     </td>
                                 </tr>

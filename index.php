@@ -24,7 +24,8 @@
 
             <div class="flex jobs-container <?= mysqli_num_rows($all_jobs) > 3 ? 'justify-between' : 'gap-x-3'  ?>">
                 
-                <?php while($all_job = mysqli_fetch_assoc($all_jobs)) { ?> 
+                <?php while($all_job = mysqli_fetch_assoc($all_jobs)) { 
+                    if($all_job['status'] === 'Approved') { ?> 
                     <div class="job-box">
                         <a href="single-job.php?title=<?= $all_job['title'] ?>&id=<?= base64_encode($all_job['id']) ?>">
                             <h2 class="color-a"><?= $all_job['title'] ?></h2>
@@ -38,7 +39,7 @@
                             </ul>
                         </a>
                     </div>
-                <?php } ?>
+                <?php } } ?>
 
             </div>
             <?php if(mysqli_num_rows($all_jobs) > 6){ ?> 

@@ -29,19 +29,22 @@
                     </a>
                 </div>
                 <div class="card box-shadow">
-                    <h3>Total Applicants</h3>
-                    <h3>0</h3>
+                    <a href="all-jobs.php">
+                        <h3>Total Applicants</h3>
+                        <h3><?= count_data('job_applications') ?></h3>
+                    </a>
                 </div>
                 <div class="card box-shadow">
-                    <h3>Total Users</h3>
-                    <h3>0</h3>
+                    <a href="users.php">
+                        <h3>Total Users</h3>
+                        <h3><?= count_data('users') ?></h3>
+                    </a>
                 </div>
                 <div class="card box-shadow">
                     
-                <a href="all-jobs.php?status=Approved">
-                    <h3>Approved Jobs</h3>
-                    <h3><?= count_data('jobs','status','Approved') ?></h3>
-                </a>
+                    <a href="all-jobs.php?status=Approved">
+                        <h3>Approved Jobs</h3>
+                        <h3><?= count_data('jobs','status','Approved') ?></h3>
                     </a>
                 </div>
                 <div class="card box-shadow">
@@ -71,9 +74,9 @@
                     </a>
                 </div>
                 <div class="card box-shadow">
-                    <a href="">
+                    <a href="my-jobs.php">
                         <h3>My Applicants</h3>
-                        <h3>5</h3>
+                        <h3><?= count_data('job_applications',0,0,$user_id,1) ?></h3>
                     </a>
                 </div>
                 <div class="card box-shadow">

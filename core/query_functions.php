@@ -10,11 +10,20 @@ function con_global(){
 
 
 // Fetch All Data
-function get_all_data($table_name){
-    return mysqli_query(con_global(),"SELECT * FROM `$table_name` ORDER BY `id` desc");
+function get_users($role=0){
+    $query = "SELECT * FROM `users`";
+    if($role != 0){
+        $query = "$query WHERE `role`='$role'";
+    }
+    $query = "$query ORDER BY `id` desc";
+    return mysqli_query(con_global(),$query);
     exit;
 }
 
+function change_user_role($id,$role){
+    return mysqli_query(con_global(),"UPDATE `users` SET `role`='$role' WHERE `id` = '$id'");
+    exit;
+}
 // Jobs for Backend
 function all_jobs_with_filters($filters=[],$relation=0,$my_jobs=0){
 
@@ -74,11 +83,13 @@ function get_jobs($filters=[],$limit=0,$order_by='oldest'){
     
     return mysqli_query(con_global(),$job_query);
 }
+
 function get_single_job($id){
     $query = "SELECT jobs.*, users.name FROM jobs INNER JOIN users ON jobs.user_id = users.id WHERE jobs.`id` = '$id'";
     return mysqli_query(con_global(),$query);
     exit;
 }
+
 // Fetch Data by a specific filed
 function get_single_data($table_name,$table_field,$table_value){
     return mysqli_query(con_global(),"SELECT * FROM `$table_name` WHERE `$table_field` = '$table_value' ORDER BY `id` desc");
@@ -98,17 +109,22 @@ function delete_data($table_name,$table_field,$table_value){
 }
 
 // Count Function
-function count_data($table_name,$filed_name=0,$filed_value=0,$by_user=0){
+function count_data($table_name,$filed_name=0,$filed_value=0,$by_user=0,$single_user_applicants=0){
 
-    $buld_query = "SELECT COUNT(*) AS cnt FROM `$table_name`"; 
-    if($filed_name != 0 && $filed_value != 0){
-        $buld_query = $buld_query." WHERE `$filed_name` = '$filed_value'";
+    if($single_user_applicants == 0){
+        $buld_query = "SELECT COUNT(*) AS cnt FROM `$table_name`"; 
+        if($filed_name != 0 && $filed_value != 0){
+            $buld_query = $buld_query." WHERE `$filed_name` = '$filed_value'";
+        }
+        if($by_user != 0){
+            $operatior = ($filed_name != 0 && $filed_value != 0) ? " AND" : " WHERE";
+            $user_condition = $operatior." `user_id` = '$by_user'";
+            $buld_query = $buld_query.$user_condition;
+        }
+    }else{
+        $buld_query = "SELECT users.id AS user_id, COUNT(DISTINCT jobs.id) AS total_jobs, COUNT(job_applications.id) AS cnt FROM users LEFT JOIN jobs ON users.id = jobs.user_id LEFT JOIN job_applications ON jobs.id = job_applications.job_id WHERE users.id = '$by_user' ORDER BY total_jobs DESC";
     }
-    if($by_user != 0){
-        $operatior = ($filed_name != 0 && $filed_value != 0) ? " AND" : " WHERE";
-        $user_condition = $operatior." `user_id` = '$by_user'";
-        $buld_query = $buld_query.$user_condition;
-    }
+
     $count_query = mysqli_query(con_global(),$buld_query);
     $get_data = mysqli_fetch_assoc($count_query);
     if($get_data['cnt'] > 0){

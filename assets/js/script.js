@@ -14,10 +14,12 @@ if(submit_form){
         });
         // Email Pattern Match
         let email = document.querySelector("input[name='email']");
-        if (email.value != "") {
-            let email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
-            if (!email_pattern.test(email.value)) {
-                validation.push("Invalid Email Format!");
+        if (email) {
+            if (email.value != "") {
+                let email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+                if (!email_pattern.test(email.value)) {
+                    validation.push("Invalid Email Format!");
+                }
             }
         }
         // Match Password

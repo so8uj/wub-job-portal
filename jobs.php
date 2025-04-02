@@ -18,6 +18,7 @@ include("./core/query_functions.php");
     }else{
         $all_jobs = get_jobs([],0,'latest');
     }
+    $count =  mysqli_num_rows($all_jobs);
 
 ?>
 
@@ -28,9 +29,13 @@ include("./core/query_functions.php");
                 <h1 class="color-a title">
                     <?= (isset($_GET['search']) && $_GET['search'] === 'true' && !empty($filters)) ? "Search Results" : "Get Your Best Job" ?>
                 </h1>
+                <?php if(!$count > 0){ ?> 
+                    <p style="margin-top: 8px;">No Result Found <a class="button button-red button-sm" href="jobs.php">X Clear Search</a></p>
+                <?php } ?>
             </div>
         </div>
     </section>
+
 
     <!-- Job Listing Section -->
     <section class="job-listing-section single-job-page">
@@ -47,9 +52,10 @@ include("./core/query_functions.php");
                 <button class="button button-a">Search</button>
             </form>
 
-            <div class="flex jobs-container <?= mysqli_num_rows($all_jobs) > 3 ? 'justify-between' : 'gap-x-3'  ?>">
+            <div class="flex jobs-container <?= $count > 3 ? 'justify-between' : 'gap-x-3'  ?>">
                 
-                <?php while($all_job = mysqli_fetch_assoc($all_jobs)) { ?> 
+                <?php while($all_job = mysqli_fetch_assoc($all_jobs)) { 
+                    if($all_job['status'] === 'Approved') { ?>  
                     <div class="job-box">
                         <a href="single-job.php?title=<?= $all_job['title'] ?>&id=<?= base64_encode($all_job['id']) ?>">
                             <h2 class="color-a"><?= $all_job['title'] ?></h2>
@@ -63,7 +69,7 @@ include("./core/query_functions.php");
                             </ul>
                         </a>
                     </div>
-                <?php } ?>
+                <?php } } ?>
 
             </div>
 

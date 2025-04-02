@@ -25,14 +25,12 @@ if(check_unique_email($job_id,$email) === true){
     header("Location: ../single-job.php?title=$title&id=".base64_encode($job_id)."&error=You have already applied for the job with this Email!");
 }
 
+$file_ext = strtolower(pathinfo($cv['name'],PATHINFO_EXTENSION));
+$cv_name = "cv-".time().".".$file_ext;
 
-$upload_dir = $_SERVER['DOCUMENT_ROOT']."/wub-job-portal/uploads/";
+move_uploaded_file($cv['tmp_name'],'../uploads/'.$cv_name);
 
-$file_ext = pathinfo($cv['name'], PATHINFO_EXTENSION);
-$cv_path = $upload_dir."cv-".time().".".strtolower($file_ext);
-move_uploaded_file($cv['tmp_name'], $cv_path);
-
-$insert = mysqli_query(con_global(),"INSERT INTO `job_applications`(`job_id`, `name`, `email`, `phone`, `cover_latter`, `cv`) VALUES ('$job_id','$name','$email','$phone','$cover_latter','$cv_path')");
+$insert = mysqli_query(con_global(),"INSERT INTO `job_applications`(`job_id`, `name`, `email`, `phone`, `cover_latter`, `cv`) VALUES ('$job_id','$name','$email','$phone','$cover_latter','$cv_name')");
 
 if($insert){
     header("Location: ../single-job.php?title=$title&id=".base64_encode($job_id)."&success=Congratulations! You have successfully applied to the job.");
